@@ -102,13 +102,6 @@ CNN-LSTM leverages embeddings + sequential modeling, achieving higher accuracy a
 
 Proper preprocessing, regularization, and early stopping greatly improved the deep learning model’s performance.
 
- 7. Future Work
-
-Integrate pretrained embeddings (e.g., GloVe, FastText)
-
-Experiment with Bidirectional LSTMs or Transformer models (BERT, DistilBERT)
-
-Perform hyperparameter tuning (batch size, learning rate, architecture depth)
 
 Explore data augmentation for handling imbalanced datasets
 
