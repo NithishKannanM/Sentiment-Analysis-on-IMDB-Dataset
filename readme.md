@@ -88,9 +88,12 @@ F1-score
 Confusion Matrix for error analysis
 
 5. Results
-Model	Accuracy	Precision	Recall	F1-score
-SVM	0.88	0.85	0.90	0.87
-CNN-LSTM	0.92	0.91	0.93	0.92
+
+| Model        | Accuracy | Precision | Recall | F1-score |
+| ------------ | -------- | --------- | ------ | -------- |
+| **SVM**      | 0.88     | 0.85      | 0.90   | 0.87     |
+| **CNN-LSTM** | 0.92     | 0.91      | 0.93   | 0.92     |
+
 
 Observation: CNN-LSTM consistently outperforms SVM, as it captures both local n-grams and long-range dependencies in reviews.
 
