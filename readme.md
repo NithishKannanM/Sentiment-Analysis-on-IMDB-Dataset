@@ -15,6 +15,8 @@ Evaluation using accuracy, precision, recall, F1-score, and confusion matrices
 
 Performance comparison using visualization
 
+I'm 2nd year and I deployed it in streamlit 
+
 Try out the project on my [Streamlit app](https://sentiment-analysis-on-imdb-dataset-nithishkannanm.streamlit.app/).
 
 1. Data Cleaning & Preprocessing
