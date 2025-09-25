@@ -17,6 +17,7 @@ max_len = 250
 # Title
 st.title("🎬 IMDB Sentiment Analysis")
 st.write("Compare **SVM (TF-IDF)** and **CNN-LSTM (Deep Learning)** predictions on movie reviews!")
+st.write("Min length of review should be at least 10 words.")
 
 # User input
 review = st.text_area("Enter your movie review:")
@@ -24,6 +25,8 @@ review = st.text_area("Enter your movie review:")
 if st.button("Predict Sentiment"):
     if review.strip() == "":
         st.warning("Please enter a review first.")
+    elif len(review.split()) < 10:
+        st.warning("Review is too short. Please enter at least 10 words.")
     else:
         # SVM Prediction
         review_tfidf = vectorizer.transform([review])
