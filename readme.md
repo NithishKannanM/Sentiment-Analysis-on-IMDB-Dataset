@@ -36,6 +36,7 @@ Remove stopwords
 Lemmatize words to their dictionary base form
 
 2. Feature Engineering
+
 For SVM (classical ML)
 
 TF-IDF Vectorizer: transforms text into weighted numerical features
@@ -55,6 +56,7 @@ Sequences padded to length max_len = 250
 Unknown words replaced with <OOV>
 
 3. Model Architectures
+
 Support Vector Machine (SVM)
 
 LinearSVC classifier
