@@ -3,18 +3,35 @@ import pickle
 import nltk
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-from nltk.corpus import stopwords
 
-# Load your models
-svm_model = pickle.load(open("svm_model.pkl", "rb"))
-vectorizer = pickle.load(open("tfidf_vectorizer.pkl", "rb"))
-cnn_lstm_model = load_model("cnn_lstm_model.h5")
-tokenizer = pickle.load(open("tokenizer.pkl", "rb"))
 
 # Config
 max_len = 250
 
-# Title
+# Cache models so they don't reload every button click
+@st.cache_resource
+def load_svm_model():
+    return pickle.load(open("svm_model.pkl", "rb"))
+
+@st.cache_resource
+def load_vectorizer():
+    return pickle.load(open("tfidf_vectorizer.pkl", "rb"))
+
+@st.cache_resource
+def load_cnn_lstm_model():
+    return load_model("cnn_lstm_model.h5")
+
+@st.cache_resource
+def load_tokenizer():
+    return pickle.load(open("tokenizer.pkl", "rb"))
+
+# Load models
+svm_model = load_svm_model()
+vectorizer = load_vectorizer()
+cnn_lstm_model = load_cnn_lstm_model()
+tokenizer = load_tokenizer()
+
+# Streamlit UI
 st.title("🎬 IMDB Sentiment Analysis")
 st.write("Compare **SVM (TF-IDF)** and **CNN-LSTM (Deep Learning)** predictions on movie reviews!")
 st.write("Min length of review should be at least 10 words.")
@@ -39,7 +56,7 @@ if st.button("Predict Sentiment"):
         pred_dl = (cnn_lstm_model.predict(review_pad) > 0.5).astype("int32")[0][0]
         label_dl = "Positive 😀" if pred_dl == 1 else "Negative 😞"
 
-        # Results
+        # Display results
         st.subheader("Results:")
         st.write(f"**SVM Prediction:** {label_svm}")
         st.write(f"**CNN-LSTM Prediction:** {label_dl}")
